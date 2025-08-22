@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout'){
             steps{
 
-                 git branch: "${env.BRANCH_NAME}", url: 'https://github.com/Nandoo-03/Final-Project.git'
+                 git branch: "${env.BRANCH_NAME}", url: 'https://github.com/sharan318/Final-project'
             }
         }
         stage('Build'){
@@ -28,7 +28,7 @@ pipeline {
                         if (env.BRANCH_NAME == 'dev') {
                             sh "docker tag final-dev:latest ${env.dockerHubUser}/dev:latest"
                             sh "docker push ${env.dockerHubUser}/dev:latest"
-                        } else if (env.BRANCH_NAME == 'master') {
+                        } else if (env.BRANCH_NAME == 'main') {
                             sh "docker tag final-prod:latest ${env.dockerHubUser}/prod:latest"
                             sh "docker push ${env.dockerHubUser}/prod:latest"
                         }
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Deploy to Server'){
             when {
-                expression { env.BRANCH_NAME == 'master' }
+                expression { env.BRANCH_NAME == 'main' }
             }
             steps{
                 script {
