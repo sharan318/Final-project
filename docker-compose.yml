@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  app:
+    image: nandoo03/prod:latest
+    ports:
+      - "80:80"
+    restart: always
