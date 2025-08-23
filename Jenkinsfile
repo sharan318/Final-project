@@ -42,7 +42,7 @@ pipeline {
             }
             steps{
                 script {
-                    echo "Deploying the Docker image using Docker Compose..."
+                    echo "Deploying the Docker image using the Docker Compose.yml"
                     sh 'chmod +x deploy.sh && ./deploy.sh'
                 }
             }
